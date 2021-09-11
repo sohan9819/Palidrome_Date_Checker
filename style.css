@@ -1,0 +1,58 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+body {
+  background-color: rgb(139, 93, 139);
+  padding: 1.4em;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: bisque;
+}
+
+.container {
+  height: 100%;
+  max-width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2em;
+  margin: auto;
+  background-color: rgb(139, 93, 139);
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  color: bisque;
+  font-size: 1.2em;
+}
+form input {
+  padding: 0.4em;
+  text-align: center;
+  border: none;
+  border-radius: 0.4em;
+  font-size: 0.8em;
+}
+form button {
+  padding: 0.4em 0.6em;
+  border: none;
+  border-radius: 0.4em;
+  font-size: 1em;
+}
+
+h2 {
+  text-align: center;
+  color: bisque;
+}
