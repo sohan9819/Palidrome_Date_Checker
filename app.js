@@ -3,19 +3,19 @@ const result = document.querySelector("#result");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  result.innerText = "Enter your date of birth";
-  const date = form.date.value;
-  // console.log(palindromeListChecker(dateFormatsList(date.split("-"))));
-  if (palindromeListChecker(dateFormatsList(date.split("-")))) {
-    // console.log("done its a palindrome");
-    result.innerText = "Yehh!!! Its a palindrome!!!";
+  if (form.date.value == "") {
+    result.innerText = "Enter your date of birth";
   } else {
-    // console.log(nearestPlaidromeFinder(date));
-    const palindromedate = nearestPlaidromeFinder(date);
-    if (palindromedate[1] == 1) {
-      result.innerText = `Nearest palindrome is ${palindromedate[0]} , you missed it by ${palindromedate[1]} days`;
+    const date = form.date.value;
+    if (palindromeListChecker(dateFormatsList(date.split("-")))) {
+      result.innerText = "Yehh!!! Its a palindrome!!!";
     } else {
-      result.innerText = `Nearest palindrome is ${palindromedate[0]} , you missed it by ${palindromedate[1]} days`;
+      const palindromedate = nearestPlaidromeFinder(date);
+      if (palindromedate[1] == 1) {
+        result.innerText = `Nearest palindrome is ${palindromedate[0]} , you missed it by ${palindromedate[1]} days`;
+      } else {
+        result.innerText = `Nearest palindrome is ${palindromedate[0]} , you missed it by ${palindromedate[1]} days`;
+      }
     }
   }
 });
@@ -44,7 +44,6 @@ const palindromeListChecker = (dateList) => {
 const palindromeStrChecker = (date) => {
   for (let i = 0; i < date.length; i++) {
     if (date[i] != date[date.length - 1 - i]) {
-      // console.log("its not a palinedrome");
       return false;
     }
   }
@@ -63,8 +62,10 @@ function dateToString(date) {
     return `${date.getFullYear()}-0${date.getMonth() + 1}-0${date.getDate()}`;
   } else if (date.getMonth() + 1 < 10) {
     return `${date.getFullYear()}-0${date.getMonth() + 1}-${date.getDate()}`;
-  } else if (date.getDay() < 10) {
-    return `${date.getFullYear()}-${date.getMonth()}-0${date.getDate()}`;
+  } else if (date.getDate() < 10) {
+    return `${date.getFullYear()}-${date.getMonth() + 1}-0${date.getDate()}`;
+  } else {
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
   }
 }
 
